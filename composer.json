@@ -8,9 +8,27 @@
             "Ntzm\\Isok\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Ntzm\\IsokTest\\": "test/"
+        }
+    },
     "require-dev": {
         "phpstan/phpstan": "^0.11.1",
         "phpunit/phpunit": "^7.5",
-        "doctrine/coding-standard": "^5.0"
+        "doctrine/coding-standard": "^5.0",
+        "phpstan/phpstan-phpunit": "^0.11.0",
+        "phpstan/phpstan-strict-rules": "^0.11.0"
+    },
+    "scripts": {
+        "check": [
+            "@test",
+            "@cs-check",
+            "@stan"
+        ],
+        "test": "phpunit",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "stan": "phpstan analyse"
     }
 }

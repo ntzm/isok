@@ -10,6 +10,7 @@ use function iterator_to_array;
 
 final class FlatArrayFormatter
 {
+    /** @return array<string, array<int, string>> */
     public function format(Violations $violations) : array
     {
         $result = [];

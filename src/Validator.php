@@ -17,6 +17,7 @@ final class Validator
         $this->rules = $rules;
     }
 
+    /** @param mixed $data */
     public function validate($data) : ValidationResult
     {
         $violations = Violations::none();

@@ -16,6 +16,7 @@ final class IsSubsetOf implements Rule
     /** @var mixed[] */
     private $allowedValues;
 
+    /** @param mixed ...$allowedValues */
     public function __construct(...$allowedValues)
     {
         $this->allowedValues = $allowedValues;

@@ -9,5 +9,6 @@ use Ntzm\Isok\Violation\Violations;
 
 interface Rule
 {
+    /** @param mixed $value */
     public function violationsFor($value, Path $path) : Violations;
 }

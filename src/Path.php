@@ -12,6 +12,7 @@ use function is_string;
 
 final class Path implements IteratorAggregate
 {
+    /** @var (int|string)[] */
     private $route = [];
 
     /** @param int|string $key */
@@ -27,7 +28,7 @@ final class Path implements IteratorAggregate
         return $path;
     }
 
-    /** @return ArrayIterator|string[] */
+    /** @return ArrayIterator|(int|string)[] */
     public function getIterator() : ArrayIterator
     {
         return new ArrayIterator($this->route);
