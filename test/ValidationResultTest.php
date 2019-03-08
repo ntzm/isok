@@ -11,6 +11,9 @@ use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \Ntzm\Isok\ValidationResult
+ */
 final class ValidationResultTest extends TestCase
 {
     public function testPasses() : void

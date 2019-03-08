@@ -11,6 +11,9 @@ use Ntzm\Isok\Rule\Arr\HasKey;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
+/**
+ * @covers \Ntzm\Isok\Rule\Arr\HasKey
+ */
 final class HasKeyTest extends TestCase
 {
     /**

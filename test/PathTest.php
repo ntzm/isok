@@ -11,6 +11,9 @@ use PHPUnit\Framework\TestCase;
 use stdClass;
 use function iterator_to_array;
 
+/**
+ * @covers \Ntzm\Isok\Path
+ */
 final class PathTest extends TestCase
 {
     /**
