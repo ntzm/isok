@@ -35,9 +35,9 @@ $validation->fails();  // false
 
 ## Inbuilt Rules
 
-### Arr
+### `Arr`
 
-#### HasKey
+#### `HasKey`
 
 Determines if the array has a specific key.
 
@@ -59,7 +59,7 @@ $v->validate(['foo' => 5])->passes(); // false
 $v->validate([])->passes(); // false
 ```
 
-#### IsArray
+#### `IsArray`
 
 Determines if the value is an array.
 
@@ -70,7 +70,7 @@ $v->validate([])->passes(); // true
 $v->validate(5)->passes(); // false
 ```
 
-#### IsSubsetOf
+#### `IsSubsetOf`
 
 Determines if the value is a subset of an array.
 
@@ -82,9 +82,9 @@ $v->validate([])->passes(); // true
 $v->validate(['red', 'green', 'purple'])->passes(); // false
 ```
 
-### Bool
+### `Bool`
 
-#### IsBool
+#### `IsBool`
 
 Determines if the value is a boolean.
 
@@ -96,7 +96,7 @@ $v->validate(false)->passes(); // true
 $v->validate(5)->passes(); // false
 ```
 
-#### IsFalse
+#### `IsFalse`
 
 Determines if the value is `false`.
 
@@ -108,7 +108,7 @@ $v->validate(true)->passes(); // false
 $v->validate(0)->passes(); // false
 ```
 
-#### IsTrue
+#### `IsTrue`
 
 Determines if the value is `true`.
 
@@ -120,9 +120,9 @@ $v->validate(false)->passes(); // false
 $v->validate(1)->passes(); // false
 ```
 
-### Net
+### `Net`
 
-#### IsEmailAddress
+#### `IsEmailAddress`
 
 Determines if the value is an email address.
 
