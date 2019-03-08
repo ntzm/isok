@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Ntzm\Isok\Violation;
 
 use ArrayIterator;
+use Countable;
 use IteratorAggregate;
 use function array_merge;
 
-final class Violations implements IteratorAggregate
+final class Violations implements Countable, IteratorAggregate
 {
     /** @var Violation[] */
     private $items;
@@ -36,6 +37,11 @@ final class Violations implements IteratorAggregate
     public function hasSome() : bool
     {
         return $this->items !== [];
+    }
+
+    public function count(): int
+    {
+        return count($this->items);
     }
 
     /** @return ArrayIterator|Violation[] */
