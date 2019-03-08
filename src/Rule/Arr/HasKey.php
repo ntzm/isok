@@ -34,9 +34,10 @@ final class HasKey implements Rule
 
     public function that(Rule ...$rules) : self
     {
-        $this->rules = $rules;
+        $rule = new self($this->key);
+        $rule->rules = $rules;
 
-        return $this;
+        return $rule;
     }
 
     public function violationsFor($value, Path $path) : Violations
