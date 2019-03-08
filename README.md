@@ -8,7 +8,7 @@ $ composer require ntzm/isok
 
 ## Usage
 
-The `Ntzm\Isok\Validator` class takes a list of [#rules](rules), and has a single method: `validate`.
+The `Ntzm\Isok\Validator` class takes a list of [rules](#rules), and has a single method: `validate`.
 
 ```php
 $validator = new Validator(
@@ -120,7 +120,7 @@ $v->validate(1)->passes(); // false
 Determines if the value is an email address.
 
 **Note: This uses PHP's `FILTER_VALIDATE_EMAIL`, which may not cover all your needs. If it does not, you are free to
-create your own [#Custom-Rules](custom rule) to match your needs.**
+create your own [custom rule](#custom-rules) to match your needs.**
 
 ## Custom Rules
 
