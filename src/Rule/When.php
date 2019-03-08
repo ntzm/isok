@@ -22,20 +22,17 @@ final class When implements Rule
 
     public function then(Rule ...$rules) : self
     {
-        $this->rules = $rules;
+        $rule        = new self(...$this->predicates);
+        $rule->rules = $rules;
 
-        return $this;
+        return $rule;
     }
 
     public function violationsFor($value, Path $path) : Violations
     {
         $violations = Violations::none();
 
-        foreach ($this->predicates as $predicate) {
-            $violations->withViolations($predicate->violationsFor($value, $path));
-        }
-
-        if ($violations->hasSome()) {
+        if ($this->failsPredicates($value, $path)) {
             return $violations;
         }
 
@@ -44,5 +41,16 @@ final class When implements Rule
         }
 
         return $violations;
+    }
+
+    private function failsPredicates($value, Path $path): bool
+    {
+        $violations = Violations::none();
+
+        foreach ($this->predicates as $predicate) {
+            $violations = $violations->withViolations($predicate->violationsFor($value, $path));
+        }
+
+        return $violations->hasNone();
     }
 }
