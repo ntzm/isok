@@ -101,7 +101,7 @@ $v->validate(5)->passes(); // false
 Determines if the value is a subset of an array.
 
 ```php
-$v = new Validator(new IsSubsetOf(['red', 'green', 'blue']));
+$v = new Validator(new IsSubsetOf('red', 'green', 'blue'));
 
 $v->validate(['red', 'green'])->passes(); // true
 $v->validate([])->passes(); // true
