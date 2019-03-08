@@ -42,7 +42,7 @@ final class HasKey implements Rule
 
     public function violationsFor($value, Path $path) : Violations
     {
-        if (is_array($value) === false || array_key_exists($this->key, $value) === false) {
+        if (! is_array($value) || ! array_key_exists($this->key, $value)) {
             return new Violations(new Violation('does not have key ' . $this->key, $this, $path));
         }
 

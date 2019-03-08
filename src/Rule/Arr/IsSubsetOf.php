@@ -24,16 +24,21 @@ final class IsSubsetOf implements Rule
 
     public function violationsFor($value, Path $path) : Violations
     {
-        if (is_array($value) === false) {
-            return new Violations(new Violation('is not a subset of', $this, $path));
-        }
-
-        $disallowedValues = array_diff($value, $this->allowedValues);
-
-        if ($disallowedValues === []) {
+        if ($this->isValid($value)) {
             return Violations::none();
         }
 
         return new Violations(new Violation('is not a subset of', $this, $path));
+    }
+
+    private function isValid($value): bool
+    {
+        if (! is_array($value)) {
+            return false;
+        }
+
+        $disallowedValues = array_diff($value, $this->allowedValues);
+
+        return $disallowedValues === [];
     }
 }
