@@ -35,11 +35,37 @@ $validation->fails();  // false
 
 ## Inbuilt Rules
 
+### `Is`
+
+Determines if the value is exactly equal.
+
+```php
+$v = new Validator(new Is('1'));
+
+$v->validate('1')->passes(); // true
+$v->validate(1)->passes(); // false
+```
+
+### `When`
+
+If all conditions are met, apply a set of rules.
+
+This rule allows you to build complex logic, such as requiring a `password_confirmation` key if a `password` key is
+passed.
+
+```php
+$v = new Validator((new When(new IsString))->then(new Is('a')));
+
+$v->validate('a')->passes(); // true
+$v->validate(1)->passes(); // true
+$v->validate('b')->passes(); // false
+```
+
 ### `Arr`
 
 #### `HasKey`
 
-Determines if the array has a specific key.
+Determines if the value has a specific key.
 
 ```php
 $v = new Validator(new HasKey('foo'));
@@ -128,6 +154,100 @@ Determines if the value is an email address.
 
 **Note: This uses PHP's `FILTER_VALIDATE_EMAIL`, which may not cover all your needs. If it does not, you are free to
 create your own [custom rule](#custom-rules) to match your needs.**
+
+```php
+$v = new Validator(new IsEmailAddress);
+
+$v->validate('bob@example.com')->passes(); // true
+$v->validate('bob')->passes(); // false
+$v->validate(5)->passes(); // false
+```
+
+#### `IsIPAddress`
+
+Determines if the value is an IP address.
+
+```php
+$v = new Validator(new IsIpAddress);
+
+$v->validate('127.0.0.1')->passes(); // true
+$v->validate('::1')->passes(); // true
+$v->validate('')->passes(); // false
+```
+
+#### `IsIPv4Address`
+
+Determines if the value is an IPv4 address.
+
+```php
+$v = new Validator(new IsIpAddress);
+
+$v->validate('127.0.0.1')->passes(); // true
+$v->validate('::1')->passes(); // false
+$v->validate('')->passes(); // false
+```
+
+#### `IsIPv6Address`
+
+Determines if the value is an IPv6 address.
+
+```php
+$v = new Validator(new IsIpAddress);
+
+$v->validate('::1')->passes(); // true
+$v->validate('127.0.0.1')->passes(); // false
+$v->validate('')->passes(); // false
+```
+
+### `Number`
+
+#### `IsFloat`
+
+Determines if the value is a float.
+
+```php
+$v = new Validator(new IsFloat);
+
+$v->validate(1.0)->passes(); // true
+$v->validate(1)->passes(); // false
+```
+
+#### `IsInt`
+
+```php
+$v = new Validator(new IsInt);
+
+$v->validate(1)->passes(); // true
+$v->validate(1.0)->passes(); // false
+```
+
+### `Object`
+
+#### `IsInstanceOf`
+
+### `String`
+
+#### `EndsWith`
+
+#### `IsString`
+
+#### `MatchesRegex`
+
+#### `StartsWith`
+
+### `UUID`
+
+#### `IsUUID`
+
+#### `IsUUIDv1`
+
+#### `IsUUIDv2`
+
+#### `IsUUIDv3`
+
+#### `IsUUIDv4`
+
+#### `IsUUIDv5`
 
 ## Custom Rules
 

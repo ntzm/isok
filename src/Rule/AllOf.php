@@ -7,6 +7,7 @@ namespace Ntzm\Isok\Rule;
 use Ntzm\Isok\Path;
 use Ntzm\Isok\Violation\Violations;
 
+// TODO: Is this class useful?
 final class AllOf implements Rule
 {
     /** @var Rule[] */
