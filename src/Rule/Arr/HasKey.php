@@ -34,7 +34,7 @@ final class HasKey implements Rule
 
     public function that(Rule ...$rules) : self
     {
-        $rule = new self($this->key);
+        $rule        = new self($this->key);
         $rule->rules = $rules;
 
         return $rule;
