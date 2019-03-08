@@ -1,4 +1,11 @@
-# Isok - PHP Validation Library
+# Isok
+
+Isok is an IDE-friendly, dependency-free, flexible and fast PHP validation library.
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Inbuilt Rules](#inbuilt-rules)
+- [Custom Rules](#custom-rules)
 
 ## Installation
 
@@ -26,7 +33,7 @@ $validation->passes(); // true
 $validation->fails();  // false
 ```
 
-## Rules
+## Inbuilt Rules
 
 ### Arr
 
