@@ -146,6 +146,31 @@ $v->validate(false)->passes(); // false
 $v->validate(1)->passes(); // false
 ```
 
+### `DateTime`
+
+#### `IsDateTime`
+
+Determines if the value is parsable by PHP.
+
+```php
+$v = new Validator(new IsDateTime);
+
+$v->validate('2019-01-01')->passes(); // true
+$v->validate('2019-01-01 00:00:00')->passes(); // true
+$v->validate('foo')->passes(); // false
+```
+
+You can optionally pass in a format as a string or as a
+[`DateTime` format constant](https://secure.php.net/manual/en/class.datetimeinterface.php#datetime.constants.types).
+
+```php
+$v = new Validator(new IsDateTime(DateTime::ATOM));
+
+$v->validate('2019-01-01T00:00:00+00:00')->passes(); // true
+$v->validate('2019-01-01 00:00:00')->passes(); // false
+$v->validate('foo')->passes(); // false
+```
+
 ### `Length`
 
 #### `HasExactLength`
