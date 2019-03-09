@@ -22,7 +22,6 @@ final class IsDateTime implements Rule
         $this->format = $format;
     }
 
-    /** @param mixed $value */
     public function violationsFor($value, Path $path) : Violations
     {
         if ($this->isValid($value)) {
