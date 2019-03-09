@@ -42,13 +42,13 @@ final class HasKeyTest extends TestCase
     {
         $rule = new HasKey('foo');
 
-        self::assertTrue($rule->violationsFor(['foo' => 0], new Path())->hasNone());
+        self::assertTrue($rule->violationsFor(['foo' => 0], Path::root())->hasNone());
     }
 
     public function testDoesNotHaveKey() : void
     {
         $rule = new HasKey('foo');
 
-        self::assertFalse($rule->violationsFor(['bar' => 0], new Path())->hasNone());
+        self::assertFalse($rule->violationsFor(['bar' => 0], Path::root())->hasNone());
     }
 }

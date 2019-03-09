@@ -13,7 +13,18 @@ use function is_string;
 final class Path implements IteratorAggregate
 {
     /** @var (int|string)[] */
-    private $route = [];
+    private $route;
+
+    /** @param (int|string)[] $route */
+    private function __construct(array $route)
+    {
+        $this->route = $route;
+    }
+
+    public static function root() : self
+    {
+        return new self([]);
+    }
 
     /** @param int|string $key */
     public function down($key) : self
@@ -22,7 +33,7 @@ final class Path implements IteratorAggregate
             throw new InvalidArgumentException('Key must be a string or an int');
         }
 
-        $path          = clone $this;
+        $path          = new self($this->route);
         $path->route[] = $key;
 
         return $path;

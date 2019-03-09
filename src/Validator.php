@@ -21,7 +21,7 @@ final class Validator
     public function validate($data) : ValidationResult
     {
         $violations = Violations::none();
-        $path       = new Path();
+        $path       = Path::root();
 
         foreach ($this->rules as $rule) {
             $violations = $violations->withViolations($rule->violationsFor($data, $path));

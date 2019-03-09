@@ -10,6 +10,9 @@ use InvalidArgumentException;
 use Ntzm\Isok\Util\Length;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \Ntzm\Isok\Util\Length
+ */
 final class LengthTest extends TestCase
 {
     /**

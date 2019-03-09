@@ -23,7 +23,7 @@ final class PathTest extends TestCase
      */
     public function testInvalidTypes($value) : void
     {
-        $path = new Path();
+        $path = Path::root();
 
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Key must be a string or an int');
@@ -42,7 +42,7 @@ final class PathTest extends TestCase
 
     public function testDownString() : void
     {
-        $path = new Path();
+        $path = Path::root();
 
         $path = $path->down('foo');
 
@@ -51,7 +51,7 @@ final class PathTest extends TestCase
 
     public function testDownInt() : void
     {
-        $path = new Path();
+        $path = Path::root();
 
         $path = $path->down(0);
 
@@ -60,7 +60,7 @@ final class PathTest extends TestCase
 
     public function testIsImmutable() : void
     {
-        $path = new Path();
+        $path = Path::root();
 
         $newPath = $path->down('foo');
 

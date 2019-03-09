@@ -70,6 +70,6 @@ final class ValidationResultTest extends TestCase
 
     private function failedValidationResult() : ValidationResult
     {
-        return new ValidationResult(new Violations(new Violation('foo', $this->fakeRule(), new Path())));
+        return new ValidationResult(new Violations(new Violation('foo', $this->fakeRule(), Path::root())));
     }
 }
