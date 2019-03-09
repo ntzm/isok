@@ -1,5 +1,9 @@
 {
     "name": "ntzm/isok",
+    "description": "An IDE-friendly, dependency-free, flexible and fast validation library",
+    "type": "library",
+    "keywords": ["validation"],
+    "license": "MIT",
     "require": {
         "php": "^7.3"
     },
@@ -14,11 +18,11 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "^0.11.1",
-        "phpunit/phpunit": "^7.5",
         "doctrine/coding-standard": "^5.0",
+        "phpstan/phpstan": "^0.11.1",
         "phpstan/phpstan-phpunit": "^0.11.0",
-        "phpstan/phpstan-strict-rules": "^0.11.0"
+        "phpstan/phpstan-strict-rules": "^0.11.0",
+        "phpunit/phpunit": "^7.5"
     },
     "scripts": {
         "check": [
@@ -30,5 +34,8 @@
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "stan": "phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true
     }
 }
