@@ -29,7 +29,7 @@ final class Path implements IteratorAggregate
     /** @param int|string $key */
     public function down($key) : self
     {
-        if (is_int($key) === false && is_string($key) === false) {
+        if (! is_int($key) && ! is_string($key)) {
             throw new InvalidArgumentException('Key must be a string or an int');
         }
 
