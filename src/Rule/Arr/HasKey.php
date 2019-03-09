@@ -25,7 +25,7 @@ final class HasKey implements Rule
     /** @param int|string $key */
     public function __construct($key)
     {
-        if (is_int($key) === false && is_string($key) === false) {
+        if (! is_int($key) && ! is_string($key)) {
             throw new InvalidArgumentException('Key must be a string or an int');
         }
 
