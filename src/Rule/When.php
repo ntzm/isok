@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ntzm\Isok\Rule;
 
 use Ntzm\Isok\Path;
+use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 
 final class When implements Rule
@@ -30,11 +31,11 @@ final class When implements Rule
 
     public function violationsFor($value, Path $path) : Violations
     {
-        $violations = Violations::none();
-
         if ($this->failsPredicates($value, $path)) {
-            return $violations;
+            return Violations::none();
         }
+
+        $violations = Violations::none();
 
         foreach ($this->rules as $rule) {
             $violations = $violations->withViolations($rule->violationsFor($value, $path));
@@ -43,7 +44,7 @@ final class When implements Rule
         return $violations;
     }
 
-    private function failsPredicates($value, Path $path): bool
+    private function failsPredicates($value, Path $path) : bool
     {
         $violations = Violations::none();
 
@@ -51,6 +52,6 @@ final class When implements Rule
             $violations = $violations->withViolations($predicate->violationsFor($value, $path));
         }
 
-        return $violations->hasNone();
+        return $violations->hasSome();
     }
 }
