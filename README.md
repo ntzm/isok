@@ -146,6 +146,16 @@ $v->validate(false)->passes(); // false
 $v->validate(1)->passes(); // false
 ```
 
+### `Length`
+
+#### `HasExactLength`
+
+#### `HasLengthBetween`
+
+#### `HasMaximumLength`
+
+#### `HasMinimumLength`
+
 ### `Net`
 
 #### `IsEmailAddress`

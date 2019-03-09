@@ -31,7 +31,8 @@ final class IsSubsetOf implements Rule
         return new Violations(new Violation('is not a subset of', $this, $path));
     }
 
-    private function isValid($value): bool
+    /** @param mixed $value */
+    private function isValid($value) : bool
     {
         if (! is_array($value)) {
             return false;

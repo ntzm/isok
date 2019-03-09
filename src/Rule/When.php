@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ntzm\Isok\Rule;
 
 use Ntzm\Isok\Path;
-use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 
 final class When implements Rule
@@ -44,6 +43,7 @@ final class When implements Rule
         return $violations;
     }
 
+    /** @param mixed $value */
     private function failsPredicates($value, Path $path) : bool
     {
         $violations = Violations::none();

@@ -8,6 +8,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use function array_merge;
+use function count;
 
 final class Violations implements Countable, IteratorAggregate
 {
@@ -39,7 +40,7 @@ final class Violations implements Countable, IteratorAggregate
         return $this->items !== [];
     }
 
-    public function count(): int
+    public function count() : int
     {
         return count($this->items);
     }
