@@ -21,10 +21,10 @@ final class Validator
     public function validate($data) : ValidationResult
     {
         $violations = Violations::none();
-        $path       = Path::root();
+        $steps      = Steps::root();
 
         foreach ($this->rules as $rule) {
-            $violations = $violations->withViolations($rule->violationsFor($data, $path));
+            $violations = $violations->withViolations($rule->violationsFor($data, $steps));
         }
 
         return new ValidationResult($violations);

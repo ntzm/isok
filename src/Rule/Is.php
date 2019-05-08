@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule;
 
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 
 final class Is implements Rule
 {
     /** @var mixed */
-    private $value;
+    private $expectedValue;
 
-    /** @param mixed $value */
-    public function __construct($value)
+    /** @param mixed $expectedValue */
+    public function __construct($expectedValue)
     {
-        $this->value = $value;
+        $this->expectedValue = $expectedValue;
     }
 
-    public function violationsFor($value, Path $path) : Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
-        if ($this->value === $value) {
+        if ($this->expectedValue === $value) {
             return Violations::none();
         }
 
-        return new Violations(new Violation('is not the expected value', $this, $path));
+        return new Violations(new Violation($this, $steps, ['expectedValue' => $this->expectedValue]));
     }
 }

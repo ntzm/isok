@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule\Object;
 
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
@@ -20,12 +20,12 @@ final class IsInstanceOf implements Rule
         $this->class = $class;
     }
 
-    public function violationsFor($value, Path $path) : Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
         if (is_a($value, $this->class)) {
             return Violations::none();
         }
 
-        return new Violations(new Violation('is not an instance of ' . $this->class, $this, $path));
+        return new Violations(new Violation($this, $steps, ['class' => $this->class]));
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Ntzm\Isok\Rule\Length;
 
 use InvalidArgumentException;
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Util\Length;
 use Ntzm\Isok\Violation\Violation;
@@ -21,13 +21,13 @@ final class HasExactLength implements Rule
         $this->length = $length;
     }
 
-    public function violationsFor($value, Path $path) : Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
         if ($this->isValid($value)) {
             return Violations::none();
         }
 
-        return new Violations(new Violation('is not length', $this, $path));
+        return new Violations(new Violation($this, $steps, ['length' => $this->length]));
     }
 
     /** @param mixed $value */

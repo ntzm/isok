@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule\String;
 
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
@@ -21,13 +21,13 @@ final class StartsWith implements Rule
         $this->needle = $needle;
     }
 
-    public function violationsFor($value, Path $path) : Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
         if (is_string($value) && $this->startsWith($value)) {
             return Violations::none();
         }
 
-        return new Violations(new Violation('does not start with ' . $this->needle, $this, $path));
+        return new Violations(new Violation($this, $steps, ['needle' => $this->needle]));
     }
 
     private function startsWith(string $value) : bool

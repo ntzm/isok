@@ -4,30 +4,25 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Violation;
 
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
 
 final class Violation
 {
-    /** @var string */
-    private $reason;
-
     /** @var Rule */
     private $rule;
 
-    /** @var Path */
-    private $path;
+    /** @var Steps */
+    private $steps;
 
-    public function __construct(string $reason, Rule $rule, Path $path)
-    {
-        $this->reason = $reason;
-        $this->rule   = $rule;
-        $this->path   = $path;
-    }
+    /** @var array */
+    private $args;
 
-    public function reason() : string
+    public function __construct(Rule $rule, Steps $steps, array $args = [])
     {
-        return $this->reason;
+        $this->rule = $rule;
+        $this->steps = $steps;
+        $this->args = $args;
     }
 
     public function rule() : Rule
@@ -35,8 +30,13 @@ final class Violation
         return $this->rule;
     }
 
-    public function path() : Path
+    public function steps() : Steps
     {
-        return $this->path;
+        return $this->steps;
+    }
+
+    public function args() : array
+    {
+        return $this->args;
     }
 }

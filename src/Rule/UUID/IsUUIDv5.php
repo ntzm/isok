@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule\UUID;
 
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
@@ -15,7 +15,7 @@ final class IsUUIDv5 implements Rule
 {
     private const REGEX = '/^[0-9A-F]{8}-[0-9A-F]{4}-5[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i';
 
-    public function violationsFor($value, Path $path) : Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
         if (is_string($value) &&
             preg_match(self::REGEX, $value) !== false
@@ -23,6 +23,6 @@ final class IsUUIDv5 implements Rule
             return Violations::none();
         }
 
-        return new Violations(new Violation('is not a UUID v5', $this, $path));
+        return new Violations(new Violation($this, $steps));
     }
 }

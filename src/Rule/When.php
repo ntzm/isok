@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule;
 
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violations;
 
 final class When implements Rule
@@ -28,28 +28,28 @@ final class When implements Rule
         return $rule;
     }
 
-    public function violationsFor($value, Path $path) : Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
-        if ($this->failsPredicates($value, $path)) {
+        if ($this->failsPredicates($value, $steps)) {
             return Violations::none();
         }
 
         $violations = Violations::none();
 
         foreach ($this->rules as $rule) {
-            $violations = $violations->withViolations($rule->violationsFor($value, $path));
+            $violations = $violations->withViolations($rule->violationsFor($value, $steps));
         }
 
         return $violations;
     }
 
     /** @param mixed $value */
-    private function failsPredicates($value, Path $path) : bool
+    private function failsPredicates($value, Steps $steps) : bool
     {
         $violations = Violations::none();
 
         foreach ($this->predicates as $predicate) {
-            $violations = $violations->withViolations($predicate->violationsFor($value, $path));
+            $violations = $violations->withViolations($predicate->violationsFor($value, $steps));
         }
 
         return $violations->hasSome();

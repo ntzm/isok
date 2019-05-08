@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule;
 
-use Ntzm\Isok\Path;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violations;
 
 // TODO: Is this class useful?
@@ -18,12 +18,12 @@ final class AllOf implements Rule
         $this->rules = $rules;
     }
 
-    public function violationsFor($value, Path $path) : Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
         $violations = Violations::none();
 
         foreach ($this->rules as $rule) {
-            $violations = $violations->withViolations($rule->violationsFor($value, $path));
+            $violations = $violations->withViolations($rule->violationsFor($value, $steps));
         }
 
         return $violations;
