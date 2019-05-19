@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Ntzm\Isok\Rule\Arr;
 
 use InvalidArgumentException;
+use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Step;
 use Ntzm\Isok\Steps;
-use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 use function array_key_exists;

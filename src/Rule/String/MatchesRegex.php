@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Ntzm\Isok\Rule\String;
 
 use InvalidArgumentException;
-use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 use function is_string;

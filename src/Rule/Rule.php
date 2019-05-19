@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ntzm\Isok\Rule;
 
 use Ntzm\Isok\Steps;
-use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 
 interface Rule

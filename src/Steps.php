@@ -12,13 +12,19 @@ final class Steps implements IteratorAggregate
     /** @var Step[] */
     private $steps = [];
 
-    private function __construct()
+    /** @var mixed */
+    private $rootValue;
+
+    /** @param mixed $rootValue */
+    private function __construct($rootValue)
     {
+        $this->rootValue = $rootValue;
     }
 
-    public static function root() : self
+    /** @param mixed $value */
+    public static function root($value) : self
     {
-        return new self();
+        return new self($value);
     }
 
     public function add(Step $step) : self
@@ -27,6 +33,12 @@ final class Steps implements IteratorAggregate
         $steps->steps[] = $step;
 
         return $steps;
+    }
+
+    /** @return mixed */
+    public function rootValue()
+    {
+        return $this->rootValue;
     }
 
     /** @return ArrayIterator|Step[] */

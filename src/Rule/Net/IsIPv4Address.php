@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule\Net;
 
-use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
+use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 use const FILTER_FLAG_IPV4;

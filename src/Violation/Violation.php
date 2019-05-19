@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Violation;
 
-use Ntzm\Isok\Steps;
 use Ntzm\Isok\Rule\Rule;
+use Ntzm\Isok\Steps;
 
 final class Violation
 {
@@ -15,14 +15,15 @@ final class Violation
     /** @var Steps */
     private $steps;
 
-    /** @var array */
+    /** @var mixed[] */
     private $args;
 
+    /** @param mixed[] $args */
     public function __construct(Rule $rule, Steps $steps, array $args = [])
     {
-        $this->rule = $rule;
+        $this->rule  = $rule;
         $this->steps = $steps;
-        $this->args = $args;
+        $this->args  = $args;
     }
 
     public function rule() : Rule
@@ -35,6 +36,7 @@ final class Violation
         return $this->steps;
     }
 
+    /** @return mixed[] */
     public function args() : array
     {
         return $this->args;
