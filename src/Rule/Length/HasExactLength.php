@@ -8,15 +8,17 @@ use InvalidArgumentException;
 use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Util\Length;
+use Ntzm\Isok\Value\Value;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 
 final class HasExactLength implements Rule
 {
-    /** @var int */
+    /** @var int|Value */
     private $length;
 
-    public function __construct(int $length)
+    /** @param int|Value */
+    public function __construct($length)
     {
         $this->length = $length;
     }

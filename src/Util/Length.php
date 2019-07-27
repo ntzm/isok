@@ -17,6 +17,10 @@ final class Length
     /** @param mixed $value */
     public static function of($value) : int
     {
+        if (is_int($value) || is_float($value)) {
+            $value = (string) $value;
+        }
+
         if (is_string($value)) {
             $encoding = mb_detect_encoding($value);
 
@@ -37,6 +41,6 @@ final class Length
             return count($value);
         }
 
-        throw new InvalidArgumentException('Must be a string or countable');
+        throw new InvalidArgumentException('Must be an int, float, string or countable');
     }
 }
