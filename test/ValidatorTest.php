@@ -13,21 +13,28 @@ use Ntzm\Isok\Step;
 use Ntzm\Isok\Validator;
 use Ntzm\Isok\Violation\Violation;
 use PHPUnit\Framework\TestCase;
+use function array_map;
+use function end;
+use function explode;
+use function get_class;
+use function implode;
+use function sprintf;
 
 final class ValidatorTest extends TestCase
 {
     /**
-     * @dataProvider provideTestCases
      * @param string[] $expectedViolations
      * @param Rule[]   $rules
      * @param mixed    $input
+     *
+     * @dataProvider provideTestCases
      */
     public function test(array $expectedViolations, array $rules, $input) : void
     {
         $validator = new Validator(...$rules);
-        $result = $validator->validate($input);
+        $result    = $validator->validate($input);
         $this->assertTrue($result->fails());
-        $violations = $result->violations();
+        $violations          = $result->violations();
         $formattedViolations = array_map(static function (Violation $violation) : string {
             $keySteps = implode('.', array_map(static function (Step $step) : string {
                 return $step->key();
@@ -38,9 +45,9 @@ final class ValidatorTest extends TestCase
             }, $violation->steps()->asArray()));
 
             $classParts = explode('\\', get_class($violation->rule()));
-            $class = end($classParts);
+            $class      = end($classParts);
 
-            return "{$keySteps} ({$nameSteps}): {$class}";
+            return sprintf('%s (%s): %s', $keySteps, $nameSteps, $class);
         }, $violations->asArray());
 
         $this->assertSame($expectedViolations, $formattedViolations);
@@ -49,31 +56,19 @@ final class ValidatorTest extends TestCase
     public function provideTestCases() : Generator
     {
         yield 'HasKey root' => [
-            [
-                ' (): HasKey',
-            ],
-            [
-                new HasKey('a', 'A')
-            ],
+            [' (): HasKey'],
+            [new HasKey('a', 'A')],
             [],
         ];
 
         yield 'HasKey with' => [
-            [
-                'a (A): EndsWith',
-            ],
-            [
-                (new HasKey('a', 'A'))->that(new EndsWith('foo')),
-            ],
-            [
-                'a' => 'foobar',
-            ],
+            ['a (A): EndsWith'],
+            [(new HasKey('a', 'A'))->that(new EndsWith('foo'))],
+            ['a' => 'foobar'],
         ];
 
         yield 'HasKey nested' => [
-            [
-                'a.b.c (A.Bee.Sea): StartsWith',
-            ],
+            ['a.b.c (A.Bee.Sea): StartsWith'],
             [
                 (new HasKey('a', 'A'))->that(
                     (new HasKey('b', 'Bee'))->that(
@@ -81,13 +76,11 @@ final class ValidatorTest extends TestCase
                             new StartsWith('foo')
                         )
                     )
-                )
+                ),
             ],
             [
                 'a' => [
-                    'b' => [
-                        'c' => 'bar',
-                    ],
+                    'b' => ['c' => 'bar'],
                 ],
             ],
         ];

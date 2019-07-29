@@ -8,6 +8,8 @@ use InvalidArgumentException;
 use RuntimeException;
 use function count;
 use function is_countable;
+use function is_float;
+use function is_int;
 use function is_string;
 use function mb_detect_encoding;
 use function mb_strlen;

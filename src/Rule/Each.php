@@ -8,6 +8,7 @@ use Ntzm\Isok\Step;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
+use function is_iterable;
 
 final class Each implements Rule
 {
@@ -19,7 +20,7 @@ final class Each implements Rule
         $this->rules = $rules;
     }
 
-    public function violationsFor($value, Steps $steps): Violations
+    public function violationsFor($value, Steps $steps) : Violations
     {
         if (! is_iterable($value)) {
             return new Violations(new Violation($this, $steps));

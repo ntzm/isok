@@ -17,7 +17,7 @@ final class HasExactLength implements Rule
     /** @var int|Value */
     private $length;
 
-    /** @param int|Value */
+    /** @param int|Value $length */
     public function __construct($length)
     {
         $this->length = $length;

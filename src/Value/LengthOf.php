@@ -4,18 +4,15 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Value;
 
+use InvalidArgumentException;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Util\Length;
 
 final class LengthOf
 {
-    /**
-     * @var Value
-     */
+    /** @var Value */
     private $value;
-    /**
-     * @var Steps
-     */
+    /** @var Steps */
     private $steps;
 
     public function __construct(Value $value, Steps $steps)
@@ -24,13 +21,13 @@ final class LengthOf
         $this->steps = $steps;
     }
 
-    public function value(): int
+    public function value() : int
     {
         $value = $this->value->getValueFromRoot($this->steps->rootValue());
 
         try {
             return Length::of($value);
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             return 0;
         }
     }
