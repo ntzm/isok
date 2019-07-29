@@ -40,6 +40,12 @@ final class Violations implements Countable, IteratorAggregate
         return $this->items !== [];
     }
 
+    /** @return Violation[] */
+    public function asArray() : array
+    {
+        return $this->items;
+    }
+
     public function count() : int
     {
         return count($this->items);

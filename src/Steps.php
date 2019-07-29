@@ -41,6 +41,12 @@ final class Steps implements IteratorAggregate
         return $this->rootValue;
     }
 
+    /** @return Step[] */
+    public function asArray() : array
+    {
+        return $this->steps;
+    }
+
     /** @return ArrayIterator|Step[] */
     public function getIterator() : ArrayIterator
     {
