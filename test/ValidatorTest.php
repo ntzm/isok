@@ -31,13 +31,12 @@ final class ValidatorTest extends TestCase
      */
     public function test(array $expectedViolations, array $rules, $input) : void
     {
-        $validator = new Validator(...$rules);
-        $result    = $validator->validate($input);
-        $this->assertTrue($result->fails());
+        $validator           = new Validator(...$rules);
+        $result              = $validator->validate($input);
         $violations          = $result->violations();
         $formattedViolations = array_map(static function (Violation $violation) : string {
             $keySteps = implode('.', array_map(static function (Step $step) : string {
-                return $step->key();
+                return (string) $step->key();
             }, $violation->steps()->asArray()));
 
             $nameSteps = implode('.', array_map(static function (Step $step) : string {
@@ -50,7 +49,7 @@ final class ValidatorTest extends TestCase
             return sprintf('%s (%s): %s', $keySteps, $nameSteps, $class);
         }, $violations->asArray());
 
-        $this->assertSame($expectedViolations, $formattedViolations);
+        self::assertSame($expectedViolations, $formattedViolations);
     }
 
     public function provideTestCases() : Generator
