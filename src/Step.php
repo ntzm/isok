@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok;
 
-use InvalidArgumentException;
-use function is_int;
-use function is_string;
-
 final class Step
 {
     /** @var int|string */
@@ -19,10 +15,6 @@ final class Step
     /** @param int|string $key */
     public function __construct($key, string $name)
     {
-        if (! is_int($key) && ! is_string($key)) {
-            throw new InvalidArgumentException('Key must be a string or an int');
-        }
-
         $this->key  = $key;
         $this->name = $name;
     }

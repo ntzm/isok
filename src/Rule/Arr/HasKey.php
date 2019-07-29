@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ntzm\Isok\Rule\Arr;
 
-use InvalidArgumentException;
 use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Step;
 use Ntzm\Isok\Steps;
@@ -12,8 +11,6 @@ use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 use function array_key_exists;
 use function is_array;
-use function is_int;
-use function is_string;
 
 final class HasKey implements Rule
 {
@@ -29,10 +26,6 @@ final class HasKey implements Rule
     /** @param int|string $key */
     public function __construct($key, ?string $name = null)
     {
-        if (! is_int($key) && ! is_string($key)) {
-            throw new InvalidArgumentException('Key must be a string or an int');
-        }
-
         $this->key  = $key;
         $this->name = $name ?? (string) $key;
     }
