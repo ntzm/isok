@@ -47,7 +47,11 @@ final class Steps implements IteratorAggregate
         return $this->steps;
     }
 
-    /** @return ArrayIterator|Step[] */
+    /**
+     * @return       ArrayIterator|Step[]
+     *
+     * @psalm-return ArrayIterator<int, Step>
+     */
     public function getIterator() : ArrayIterator
     {
         return new ArrayIterator($this->steps);

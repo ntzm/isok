@@ -20,7 +20,7 @@ final class MatchesRegex implements Rule
     public function __construct(string $pattern)
     {
         if (preg_match($pattern, '') === false) {
-            throw new InvalidArgumentException($this->pattern . ' is not a valid regex pattern');
+            throw new InvalidArgumentException($pattern . ' is not a valid regex pattern');
         }
 
         $this->pattern = $pattern;
