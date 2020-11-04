@@ -55,11 +55,7 @@ final class Violations implements Countable, IteratorAggregate
         return count($this->items);
     }
 
-    /**
-     * @return       ArrayIterator|Violation[]
-     *
-     * @psalm-return ArrayIterator<int, Violation>
-     */
+    /** @psalm-return ArrayIterator<int, Violation> */
     public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->items);
