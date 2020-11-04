@@ -7,7 +7,7 @@ namespace Ntzm\Isok\Value;
 final class ArrayValue implements Value
 {
     /** @var string[] */
-    private $path;
+    private array $path;
 
     public function __construct(string ...$path)
     {

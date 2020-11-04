@@ -10,7 +10,7 @@ use Ntzm\Isok\Violation\Violations;
 final class Validator
 {
     /** @var Rule[] */
-    private $rules;
+    private array $rules;
 
     public function __construct(Rule ...$rules)
     {
@@ -18,7 +18,7 @@ final class Validator
     }
 
     /** @param mixed $data */
-    public function validate($data) : ValidationResult
+    public function validate($data): ValidationResult
     {
         $violations = Violations::none();
         $steps      = Steps::root($data);

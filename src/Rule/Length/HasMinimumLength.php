@@ -13,15 +13,14 @@ use Ntzm\Isok\Violation\Violations;
 
 final class HasMinimumLength implements Rule
 {
-    /** @var int */
-    private $min;
+    private int $min;
 
     public function __construct(int $min)
     {
         $this->min = $min;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ($this->isValid($value)) {
             return Violations::none();
@@ -31,7 +30,7 @@ final class HasMinimumLength implements Rule
     }
 
     /** @param mixed $value */
-    private function isValid($value) : bool
+    private function isValid($value): bool
     {
         try {
             $length = Length::of($value);

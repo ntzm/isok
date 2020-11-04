@@ -23,7 +23,7 @@ final class HasExactLength implements Rule
         $this->length = $length;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ($this->isValid($value)) {
             return Violations::none();
@@ -33,7 +33,7 @@ final class HasExactLength implements Rule
     }
 
     /** @param mixed $value */
-    private function isValid($value) : bool
+    private function isValid($value): bool
     {
         try {
             $length = Length::of($value);

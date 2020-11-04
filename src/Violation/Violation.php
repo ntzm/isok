@@ -9,14 +9,11 @@ use Ntzm\Isok\Steps;
 
 final class Violation
 {
-    /** @var Rule */
-    private $rule;
-
-    /** @var Steps */
-    private $steps;
+    private Rule $rule;
+    private Steps $steps;
 
     /** @var mixed[] */
-    private $args;
+    private array $args;
 
     /** @param mixed[] $args */
     public function __construct(Rule $rule, Steps $steps, array $args = [])
@@ -26,18 +23,18 @@ final class Violation
         $this->args  = $args;
     }
 
-    public function rule() : Rule
+    public function rule(): Rule
     {
         return $this->rule;
     }
 
-    public function steps() : Steps
+    public function steps(): Steps
     {
         return $this->steps;
     }
 
     /** @return mixed[] */
-    public function args() : array
+    public function args(): array
     {
         return $this->args;
     }

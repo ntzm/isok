@@ -13,11 +13,8 @@ use Ntzm\Isok\Violation\Violations;
 
 final class HasLengthBetween implements Rule
 {
-    /** @var int */
-    private $min;
-
-    /** @var int */
-    private $max;
+    private int $min;
+    private int $max;
 
     public function __construct(int $min, int $max)
     {
@@ -25,7 +22,7 @@ final class HasLengthBetween implements Rule
         $this->max = $max;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ($this->isValid($value)) {
             return Violations::none();
@@ -35,7 +32,7 @@ final class HasLengthBetween implements Rule
     }
 
     /** @param mixed $value */
-    private function isValid($value) : bool
+    private function isValid($value): bool
     {
         try {
             $length = Length::of($value);

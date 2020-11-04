@@ -8,13 +8,15 @@ use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
+
+use function filter_var;
+
 use const FILTER_FLAG_IPV6;
 use const FILTER_VALIDATE_IP;
-use function filter_var;
 
 final class IsIPv6Address implements Rule
 {
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if (filter_var($value, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) !== false) {
             return Violations::none();

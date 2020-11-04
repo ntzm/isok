@@ -7,6 +7,9 @@ namespace Ntzm\Isok\Translator;
 use Ntzm\Isok\Rule;
 use Ntzm\Isok\Violation\Violation;
 
+use function array_key_exists;
+use function get_class;
+
 final class EnglishTranslator implements Translator
 {
     private const TRANSLATIONS = [

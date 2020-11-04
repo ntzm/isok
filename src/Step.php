@@ -9,8 +9,7 @@ final class Step
     /** @var int|string */
     private $key;
 
-    /** @var string */
-    private $name;
+    private string $name;
 
     /** @param int|string $key */
     public function __construct($key, string $name)
@@ -25,7 +24,7 @@ final class Step
         return $this->key;
     }
 
-    public function name() : string
+    public function name(): string
     {
         return $this->name;
     }

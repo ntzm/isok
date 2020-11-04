@@ -20,7 +20,7 @@ final class Is implements Rule
         $this->expectedValue = $expectedValue;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ((new ValueOf($this->expectedValue, $steps))->value() === $value) {
             return Violations::none();

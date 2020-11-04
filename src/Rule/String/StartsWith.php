@@ -10,6 +10,7 @@ use Ntzm\Isok\Value\Value;
 use Ntzm\Isok\Value\ValueOf;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
+
 use function is_string;
 use function strpos;
 
@@ -24,7 +25,7 @@ final class StartsWith implements Rule
         $this->needle = $needle;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         $needle = (new ValueOf($this->needle, $steps))->value();
 
@@ -35,7 +36,7 @@ final class StartsWith implements Rule
         return new Violations(new Violation($this, $steps, ['needle' => $needle]));
     }
 
-    private function startsWith(string $value, string $needle) : bool
+    private function startsWith(string $value, string $needle): bool
     {
         return strpos($value, $needle) === 0;
     }

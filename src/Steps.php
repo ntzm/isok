@@ -10,7 +10,7 @@ use IteratorAggregate;
 final class Steps implements IteratorAggregate
 {
     /** @var Step[] */
-    private $steps = [];
+    private array $steps = [];
 
     /** @var mixed */
     private $rootValue;
@@ -22,12 +22,12 @@ final class Steps implements IteratorAggregate
     }
 
     /** @param mixed $value */
-    public static function root($value) : self
+    public static function root($value): self
     {
         return new self($value);
     }
 
-    public function add(Step $step) : self
+    public function add(Step $step): self
     {
         $steps          = clone $this;
         $steps->steps[] = $step;
@@ -42,7 +42,7 @@ final class Steps implements IteratorAggregate
     }
 
     /** @return Step[] */
-    public function asArray() : array
+    public function asArray(): array
     {
         return $this->steps;
     }
@@ -52,7 +52,7 @@ final class Steps implements IteratorAggregate
      *
      * @psalm-return ArrayIterator<int, Step>
      */
-    public function getIterator() : ArrayIterator
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->steps);
     }

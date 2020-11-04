@@ -6,7 +6,7 @@ namespace Ntzm\Isok;
 
 final class Translation
 {
-    public function get() : array
+    public function get(): array
     {
         return [
             Rule\Arr\HasKey::class => ':name must have a key named :key',

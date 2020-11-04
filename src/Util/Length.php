@@ -6,6 +6,7 @@ namespace Ntzm\Isok\Util;
 
 use InvalidArgumentException;
 use RuntimeException;
+
 use function count;
 use function is_countable;
 use function is_float;
@@ -17,7 +18,7 @@ use function mb_strlen;
 final class Length
 {
     /** @param mixed $value */
-    public static function of($value) : int
+    public static function of($value): int
     {
         if (is_int($value) || is_float($value)) {
             $value = (string) $value;

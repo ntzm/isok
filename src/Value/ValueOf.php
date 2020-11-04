@@ -11,8 +11,7 @@ final class ValueOf
     /** @var mixed */
     private $value;
 
-    /** @var Steps */
-    private $steps;
+    private Steps $steps;
 
     /** @param mixed $value */
     public function __construct($value, Steps $steps)

@@ -8,12 +8,14 @@ use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
-use const FILTER_VALIDATE_MAC;
+
 use function filter_var;
+
+use const FILTER_VALIDATE_MAC;
 
 final class IsMacAddress implements Rule
 {
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if (filter_var($value, FILTER_VALIDATE_MAC) !== false) {
             return Violations::none();

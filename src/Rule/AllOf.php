@@ -11,14 +11,14 @@ use Ntzm\Isok\Violation\Violations;
 final class AllOf implements Rule
 {
     /** @var Rule[] */
-    private $rules;
+    private array $rules;
 
     public function __construct(Rule ...$rules)
     {
         $this->rules = $rules;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         $violations = Violations::none();
 

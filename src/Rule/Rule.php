@@ -10,5 +10,5 @@ use Ntzm\Isok\Violation\Violations;
 interface Rule
 {
     /** @param mixed $value */
-    public function violationsFor($value, Steps $steps) : Violations;
+    public function violationsFor($value, Steps $steps): Violations;
 }

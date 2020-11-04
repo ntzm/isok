@@ -13,6 +13,7 @@ use Ntzm\Isok\Step;
 use Ntzm\Isok\Validator;
 use Ntzm\Isok\Violation\Violation;
 use PHPUnit\Framework\TestCase;
+
 use function array_map;
 use function end;
 use function explode;
@@ -29,17 +30,17 @@ final class ValidatorTest extends TestCase
      *
      * @dataProvider provideTestCases
      */
-    public function test(array $expectedViolations, array $rules, $input) : void
+    public function test(array $expectedViolations, array $rules, $input): void
     {
         $validator           = new Validator(...$rules);
         $result              = $validator->validate($input);
         $violations          = $result->violations();
-        $formattedViolations = array_map(static function (Violation $violation) : string {
-            $keySteps = implode('.', array_map(static function (Step $step) : string {
+        $formattedViolations = array_map(static function (Violation $violation): string {
+            $keySteps = implode('.', array_map(static function (Step $step): string {
                 return (string) $step->key();
             }, $violation->steps()->asArray()));
 
-            $nameSteps = implode('.', array_map(static function (Step $step) : string {
+            $nameSteps = implode('.', array_map(static function (Step $step): string {
                 return $step->name();
             }, $violation->steps()->asArray()));
 
@@ -52,7 +53,7 @@ final class ValidatorTest extends TestCase
         self::assertSame($expectedViolations, $formattedViolations);
     }
 
-    public function provideTestCases() : Generator
+    public function provideTestCases(): Generator
     {
         yield 'HasKey root' => [
             [' (): HasKey'],

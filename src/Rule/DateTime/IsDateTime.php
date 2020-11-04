@@ -10,19 +10,19 @@ use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
 use Throwable;
+
 use function is_string;
 
 final class IsDateTime implements Rule
 {
-    /** @var string|null */
-    private $format;
+    private ?string $format;
 
     public function __construct(?string $format = null)
     {
         $this->format = $format;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ($this->isValid($value)) {
             return Violations::none();
@@ -32,7 +32,7 @@ final class IsDateTime implements Rule
     }
 
     /** @param mixed $value */
-    private function isValid($value) : bool
+    private function isValid($value): bool
     {
         if (! is_string($value)) {
             return false;

@@ -8,12 +8,14 @@ use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
-use const FILTER_VALIDATE_EMAIL;
+
 use function filter_var;
+
+use const FILTER_VALIDATE_EMAIL;
 
 final class IsEmailAddress implements Rule
 {
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if (filter_var($value, FILTER_VALIDATE_EMAIL) !== false) {
             return Violations::none();

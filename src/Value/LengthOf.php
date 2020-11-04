@@ -10,10 +10,8 @@ use Ntzm\Isok\Util\Length;
 
 final class LengthOf
 {
-    /** @var Value */
-    private $value;
-    /** @var Steps */
-    private $steps;
+    private Value $value;
+    private Steps $steps;
 
     public function __construct(Value $value, Steps $steps)
     {
@@ -21,7 +19,7 @@ final class LengthOf
         $this->steps = $steps;
     }
 
-    public function value() : int
+    public function value(): int
     {
         $value = $this->value->getValueFromRoot($this->steps->rootValue());
 

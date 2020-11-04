@@ -10,6 +10,7 @@ use Ntzm\Isok\Value\Value;
 use Ntzm\Isok\Value\ValueOf;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
+
 use function is_string;
 use function strcasecmp;
 use function strlen;
@@ -26,7 +27,7 @@ final class EndsWith implements Rule
         $this->needle = $needle;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         $needle = (new ValueOf($this->needle, $steps))->value();
 
@@ -37,7 +38,7 @@ final class EndsWith implements Rule
         return new Violations(new Violation($this, $steps, ['needle' => $needle]));
     }
 
-    private function endsWith(string $value, string $needle) : bool
+    private function endsWith(string $value, string $needle): bool
     {
         return strcasecmp(
             substr($value, strlen($value) - strlen($needle)),

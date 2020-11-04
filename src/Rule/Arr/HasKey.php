@@ -9,6 +9,7 @@ use Ntzm\Isok\Step;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
+
 use function array_key_exists;
 use function is_array;
 
@@ -18,10 +19,9 @@ final class HasKey implements Rule
     private $key;
 
     /** @var Rule[] */
-    private $rules = [];
+    private array $rules = [];
 
-    /** @var string */
-    private $name;
+    private string $name;
 
     /** @param int|string $key */
     public function __construct($key, ?string $name = null)
@@ -30,7 +30,7 @@ final class HasKey implements Rule
         $this->name = $name ?? (string) $key;
     }
 
-    public function that(Rule ...$rules) : self
+    public function that(Rule ...$rules): self
     {
         $rule        = clone $this;
         $rule->rules = $rules;
@@ -38,7 +38,7 @@ final class HasKey implements Rule
         return $rule;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if (! is_array($value) || ! array_key_exists($this->key, $value)) {
             return new Violations(new Violation($this, $steps, ['key' => $this->key]));

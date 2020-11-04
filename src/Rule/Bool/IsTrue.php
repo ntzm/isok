@@ -11,7 +11,7 @@ use Ntzm\Isok\Violation\Violations;
 
 final class IsTrue implements Rule
 {
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ($value === true) {
             return Violations::none();

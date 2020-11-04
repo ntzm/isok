@@ -10,17 +10,17 @@ use Ntzm\Isok\Violation\Violations;
 final class When implements Rule
 {
     /** @var Rule[] */
-    private $predicates;
+    private array $predicates;
 
     /** @var Rule[] */
-    private $rules = [];
+    private array $rules = [];
 
     public function __construct(Rule ...$predicates)
     {
         $this->predicates = $predicates;
     }
 
-    public function then(Rule ...$rules) : self
+    public function then(Rule ...$rules): self
     {
         $rule        = new self(...$this->predicates);
         $rule->rules = $rules;
@@ -28,7 +28,7 @@ final class When implements Rule
         return $rule;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ($this->failsPredicates($value, $steps)) {
             return Violations::none();
@@ -44,7 +44,7 @@ final class When implements Rule
     }
 
     /** @param mixed $value */
-    private function failsPredicates($value, Steps $steps) : bool
+    private function failsPredicates($value, Steps $steps): bool
     {
         $violations = Violations::none();
 

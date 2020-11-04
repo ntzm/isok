@@ -8,13 +8,14 @@ use Ntzm\Isok\Rule\Rule;
 use Ntzm\Isok\Steps;
 use Ntzm\Isok\Violation\Violation;
 use Ntzm\Isok\Violation\Violations;
+
 use function array_diff;
 use function is_array;
 
 final class IsSubsetOf implements Rule
 {
     /** @var mixed[] */
-    private $allowedValues;
+    private array $allowedValues;
 
     /** @param mixed ...$allowedValues */
     public function __construct(...$allowedValues)
@@ -22,7 +23,7 @@ final class IsSubsetOf implements Rule
         $this->allowedValues = $allowedValues;
     }
 
-    public function violationsFor($value, Steps $steps) : Violations
+    public function violationsFor($value, Steps $steps): Violations
     {
         if ($this->isValid($value)) {
             return Violations::none();
@@ -32,7 +33,7 @@ final class IsSubsetOf implements Rule
     }
 
     /** @param mixed $value */
-    private function isValid($value) : bool
+    private function isValid($value): bool
     {
         if (! is_array($value)) {
             return false;
