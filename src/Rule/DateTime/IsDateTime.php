@@ -38,16 +38,16 @@ final class IsDateTime implements Rule
             return false;
         }
 
-        try {
-            if ($this->format === null) {
+        if ($this->format === null) {
+            try {
                 new DateTimeImmutable($value);
-            } else {
-                DateTimeImmutable::createFromFormat($this->format, $value);
+            } catch (Throwable $e) {
+                return false;
             }
-        } catch (Throwable $e) {
-            return false;
+
+            return true;
         }
 
-        return true;
+        return DateTimeImmutable::createFromFormat($this->format, $value) !== false;
     }
 }
