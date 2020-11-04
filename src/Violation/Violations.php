@@ -11,6 +11,9 @@ use IteratorAggregate;
 use function array_merge;
 use function count;
 
+/**
+ * @implements IteratorAggregate<int, Violation>
+ */
 final class Violations implements Countable, IteratorAggregate
 {
     /** @var Violation[] */

@@ -53,6 +53,7 @@ final class ValidatorTest extends TestCase
         self::assertSame($expectedViolations, $formattedViolations);
     }
 
+    /** @return Generator<string, array{0: string[], 1: Rule[], 2: mixed}> */
     public function provideTestCases(): Generator
     {
         yield 'HasKey root' => [

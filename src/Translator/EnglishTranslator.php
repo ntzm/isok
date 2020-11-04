@@ -54,6 +54,6 @@ final class EnglishTranslator implements Translator
             return $rule . ' violation';
         }
 
-        $message = self::TRANSLATIONS[$rule];
+        return self::TRANSLATIONS[$rule];
     }
 }

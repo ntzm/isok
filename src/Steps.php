@@ -7,6 +7,9 @@ namespace Ntzm\Isok;
 use ArrayIterator;
 use IteratorAggregate;
 
+/**
+ * @implements IteratorAggregate<int, Step>
+ */
 final class Steps implements IteratorAggregate
 {
     /** @var Step[] */
